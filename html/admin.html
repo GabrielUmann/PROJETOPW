@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="../assets/admin.js" async></script>
+    </head>
+    <body>
+        <h1> CADASTRO DE PRODUTO </h1>
+        <form id="registerProduct" method="post" enctype="multipart/form-data">
+            <label for="name"> NOME </label>
+            <input name="name" type="text">
+
+            <label for="name"> PRECO </label>
+            <input name="price" type="text">
+
+            <label for="name"> IMAGEM </label>
+            <input name="image" type="file" accept="image/*">
+
+            <label for="name"> CATEGORIA </label>
+            <select name="category" id="category">
+                <option selected disabled value="0"> Selecione sua Categoria </option>
+            </select>
+        </form>
+    </body>
+</html>

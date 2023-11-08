@@ -1,0 +1,17 @@
+.product2{
+    color: white;
+    min-height: 20vh;
+    background: white;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+}
+.product2 img{  
+    width: 200px;
+}
+.product2 p{
+    text-align: center;
+    color: black;
+}
