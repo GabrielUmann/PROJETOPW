@@ -37,7 +37,7 @@ body{
     font-size: 50px;
     line-height: 1;
 }
-.cadastro input {
+#registerUser input {
     width: 100%;
     min-width: 200px;
     padding: 8px 10px;
@@ -49,11 +49,11 @@ body{
     color: rgb(1, 1, 1);
     border: none;
 }
-.cadastro input::placeholder {
+#registerUser input::placeholder {
     color:darkviolet;
 }
 
-.cadastro button {
+#registerUser button {
     width: 100%;
     margin-bottom: 20px;
     font-size: 20px;
@@ -64,7 +64,7 @@ body{
     transition: all .30s ease;
     cursor: pointer;
 }
-.cadastro button:hover {
+#cadastro button:hover {
     filter: brightness(1.4);
 }
 

@@ -74,7 +74,7 @@ button {
 
 button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #d41717;
     color: white;
     border: none;
     cursor: pointer;
@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    filter: brightness(1.5);
 }
 
 /* Adicione estilos para a modal aqui */
