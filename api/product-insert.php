@@ -25,7 +25,7 @@ $stmt->execute();
 if($stmt->rowCount() != 1){
     $response = [
         "type" => "error",
-        "message" => "Erro no cadastro de cu do lucas preto produtos!"
+        "message" => "Erro no cadastro de produtos!"
     ];
     echo json_encode($response);
     exit;
