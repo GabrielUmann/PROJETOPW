@@ -21,11 +21,11 @@ $stmt->bindParam("name", $post["name"]);
 $stmt->bindParam("price",$post["price"]);
 $stmt->bindParam("category", $post["category"]);
 $stmt->execute();
-
+ 
 if($stmt->rowCount() != 1){
     $response = [
         "type" => "error",
-        "message" => "Erro no cadastro de produtos!"
+        "message" => "Erro no cadastro de cu do lucas preto produtos!"
     ];
     echo json_encode($response);
     exit;
