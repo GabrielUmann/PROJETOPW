@@ -1,12 +1,4 @@
-/* abrir e fechar carrinho e login */
-const btnLogin = document.querySelector("#btnLogin")
-const login = document.querySelector(".login")
-const icons = document.querySelector(".icons")
-
-btnLogin.addEventListener("click", () => {
-    login.classList.toggle("remove")
-    icons.classList.toggle("remove")
-})
+/* abrir e fechar carrinho */
 
 const btnCarrinho = document.querySelector(".btnCarrinho")
 const cart = document.querySelector(".cart")
@@ -14,49 +6,30 @@ btnCarrinho.addEventListener("click", () => {
     cart.classList.toggle("remove")
 })
 
-// FUNCTION GET CATEGORIES
+// LOGIN
 
-const formSave = document.querySelector("#form-login")
-
-formSave.addEventListener("submit", (event) => {
-    event.preventDefault()
-    
-    let url = `api/users-login.php`
-    let data = new FormData(formSave)
-    let options = {
-        method : "post",
-        body: data
-    }
-    
-    fetch(url, options).then((response) => {
-        response.json().then((users) => {
-            console.log(users)
-        })
-    })
-
-}) 
 
 // CARRINHO
 
 const product3 = document.querySelector(".product3")
 const cartItens = document.querySelector("#cart-items")
-const cartTotal = document.querySelector(".cart-total")
+const priceCart = document.querySelector("#priceCart")
 let total = 0
-let temp = 0
-let AddtoCart = []
+let temp
+let Cart = []
 
   inicializarSite = () =>{
     let options = {
         method : "get"
     }
-    let url = `api/product-list.php`
+    let url = `../api/product-list.php`
 
     fetch(url, options).then((response) => {
         response.json().then((productList) => {
             //JOGA A LISTA DE PRODUTOS PRO HTML
             
             productList.forEach((e, i) => {
-                console.log(productList)
+                //console.log(productList)
                 product3.innerHTML += `
                 <div class="tds-prdts">
                   <div class="prod">
@@ -75,26 +48,24 @@ let AddtoCart = []
 
             //ADICIONA O PRODUTO NO CARRINHO 
             const addCartButton = document.querySelectorAll(".prtd-btn")
-            function AddtoCart(){
-                cartItens.innerHTML = ""
-                productList.forEach((e) => {
-                    if(temp ==! null){
-                    cartItens.innerHTML +=`
-                    <li>${e.nome} <span class="price">${e.preco}</span>
-                    </li>
-                    `
-                    AddtoCart.push(e)
-                    total += e.preco
-                    cartTotal.innerHTML = `Total: <span class="price">R$${total.toFixed(2)}</span>`
+            function AddtoCart(){   
+                cartItens.innerHTML +=`
+                <li>${temp.nome} <span class="price">${temp.preco}</span>
+                </li>
+                `
+                Cart.push(temp)
+                console.log(Cart)
+                total += Number(temp.preco)
+                priceCart.innerHTML = `R$${total.toFixed(2)}`
                     
-                }
-            })
+                
+            
         }
             //ESPERA O BOTAO SER CLICADO
             addCartButton.forEach((e, i) => {
                 e.addEventListener("click", () => {
                     temp = productList[i];
-                    AddtoCart()
+                    AddtoCart(temp)
 
                 })
             })

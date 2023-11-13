@@ -20,5 +20,5 @@ formRegister.addEventListener("submit", (event) => {
 
     setTimeout(() => {
         window.location.href = "../index.html"
-    }, 10) 
+    }, 1000) 
 });

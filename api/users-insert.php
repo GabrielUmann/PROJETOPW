@@ -30,6 +30,18 @@ if($stmt->rowCount() == 1){
 }
 
 //
+// Confere se a senha é menor que 7
+//
+if(mb_strlen($post["password"]) < 7){
+    $response = [
+        "type" => "error",
+        "message" => "Senha Curta!"
+    ];
+    echo json_encode($response);
+    exit;
+}
+
+//
 // INSERIR VALOR NO BANCO DE DADOS
 //
 
