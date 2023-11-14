@@ -16,23 +16,33 @@ formSave.addEventListener("submit", (event) => {
     fetch(url, options).then((response) => {
         response.json().then((users) => {
             console.log(users)
-            if(users.message != "error"){
+            if(users.type != "error"){
                 alertBox.innerHTML = `
                 <p>${users.message}</p>
+                <img src="img_pagina/check-icon.png"> <br>
+                <button class="ok-button" onclick="closeAlert()" >OK</button>
             `
-            alertBox.classList.add('show sucess')
+            alertBox.classList.add('show')
+            alertBox.classList.add('sucess')
+            
+            setTimeout(() => {
+                window.location.href = "html/principal.html"
+            }, 1500)  
+
             }else{
                 alertBox.innerHTML = `
                 <p>${users.message}</p>
+                <img src="img_pagina/x-mark-check.png"> <br>
+                <button class="ok-button" onclick="closeAlert()" >OK</button>
             `
-            alertBox.classList.add('show error')
+            alertBox.classList.add('show')
+            alertBox.classList.add('error')
+
             }
 
+            })
         })
-    })
-
-    setTimeout(() => {
-         window.location.href = "html/principal.html"
-    }, 3000) 
-
-}) 
+    }) 
+    function closeAlert(){
+        alertBox.classList.remove('show')
+    }
