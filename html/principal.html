@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../assets/footer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <script src="../assets/script.js" async></script>
+        <script src="../assets/script.js"  type="module" async></script>
 
         
         <link rel="stylesheet"
@@ -31,8 +31,13 @@
             <ul class="nav">
                 <li><a href="#scrollProducts">Produtos</a></li>
                 <li><a href="#footer_content">Contato</a></li>
-                <li><a class="btnCarrinho">Carrinho</a></li>
-                <li><a class="ri-shopping-cart-2-line"></a></li>
+                <li>
+                    <div id="carrinho">
+                        <a class="btnCarrinho">Carrinho</a>
+                        <div id="contador">0</div>
+                    </div>
+                    
+                </li>
             </ul>
 
             <div class="bx bx-menu" id="menu-icon"></div>
@@ -62,21 +67,9 @@
         </section>
         <section class="product3" name="product" id="scrollProducts">
 
-          </section>
+        </section>
         
-            <div class="cart remove">
-                <div class="header">
-                    <a href="" class="btnCarrinho">X</a><h2>Sua cesta de compras:</h2>
-                </div>
-                <ul id="cart-items">
-
-                </ul>
-                <div class="cart-total">
-                    Total: <span id="priceCart">R$ 00</span>
-                </div>
-                <button id="btnBuy">Finalizar Compra</button><br>
-                <button id="ctnBuy">Continue Comprando</button><br>
-            </div>
+            
         <footer>
             <div id="footer_content">
                 <div id="footer_contacts">

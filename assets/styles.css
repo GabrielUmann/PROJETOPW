@@ -30,6 +30,19 @@ header{
     padding: 33px 9%;
 
 }
+#contador {
+    position: absolute;
+    top: 3%;
+    right: 2%;
+    background-color: rgb(255, 0, 0);
+    color: #ffffff;
+    width: 20px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+}
 
 .logo{
     font-size: 30px;
@@ -127,7 +140,7 @@ section{
     font-weight: 400;
     font-size: 20px;
 }
-#btnBuy, #ctnBuy {
+.cart button {
     background-color: #000000;
     border: none;
     color: white;
@@ -206,6 +219,7 @@ section{
     font-weight: 400;
     transform: translateY(-5px);
 }
+
 
 @media(max-width: 1535px){
     header{

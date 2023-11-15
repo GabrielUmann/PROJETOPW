@@ -1,33 +1,30 @@
-/* abrir e fechar carrinho */
 
 const btnCarrinho = document.querySelector(".btnCarrinho")
-const cart = document.querySelector(".cart")
 btnCarrinho.addEventListener("click", () => {
-    cart.classList.toggle("remove")
+    window.location.href = "cart.html"
 })
 
-// LOGIN
 
 
 // CARRINHO
-
+const contadorText = document.querySelector("#contador")
 const product3 = document.querySelector(".product3")
 const cartItens = document.querySelector("#cart-items")
 const priceCart = document.querySelector("#priceCart")
+let count = 0
 let total = 0
 let temp
-let Cart = []
 
-  inicializarSite = () =>{
+const inicializarSite = () => {
     let options = {
-        method : "get"
+        method: "get"
     }
     let url = `../api/product-list.php`
 
     fetch(url, options).then((response) => {
         response.json().then((productList) => {
             //JOGA A LISTA DE PRODUTOS PRO HTML
-            
+
             productList.forEach((e, i) => {
                 //console.log(productList)
                 product3.innerHTML += `
@@ -44,23 +41,31 @@ let Cart = []
                   </div> 
                 </div>
                 `
-            })    
+            })
 
             //ADICIONA O PRODUTO NO CARRINHO 
             const addCartButton = document.querySelectorAll(".prtd-btn")
-            function AddtoCart(){   
-                cartItens.innerHTML +=`
-                <li>${temp.nome} <span class="price">${temp.preco}</span>
-                </li>
-                `
-                Cart.push(temp)
-                console.log(Cart)
-                total += Number(temp.preco)
-                priceCart.innerHTML = `R$${total.toFixed(2)}`
-                    
-                
-            
-        }
+            function AddtoCart(temp) {
+                var Cart = JSON.parse(localStorage.getItem("cart"))
+                if (Cart == null) {
+                    Cart = []
+                }
+                let boolean = true
+                Cart.forEach((item) => {
+                    if (item.id == temp.id) {
+                        item.qtd += 1
+                        boolean = false
+                    }
+
+                })
+                if (boolean) {
+                    temp.qtd = 1
+                    Cart.push(temp)
+                }
+                contadorText.textContent = Cart.length
+                localStorage.setItem("cart", JSON.stringify(Cart))
+                console.log(JSON.parse(localStorage.getItem("cart")))
+            }
             //ESPERA O BOTAO SER CLICADO
             addCartButton.forEach((e, i) => {
                 e.addEventListener("click", () => {

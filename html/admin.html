@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="../assets/admin.js" async></script>
+        <link rel="stylesheet" href="../assets/adm.css">
     </head>
     <body>
         <h1> CADASTRO DE PRODUTO </h1>
@@ -54,30 +55,6 @@
                 </tbody>
             </table>
         </div>
-        <!-- Modal para editar Livro -->
-        <div id="edit-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Editar Livro</h2>
-                <form id="edit-form">
-                    <input type="hidden" id="bookId" name="bookId">
-                    <label for="title">Título:</label>
-                    <input type="text" id="title" name="title">
-                    <label for="category">Categoria:</label>
-                    <select id="categoryModal" name="category">
-                        <option value="">Selecione uma Categoria</option>
-                    </select>
-                    <label for="author">Autor:</label>
-                    <select id="authorModal" name="author">
-                        <option value="">Selecione um Autor</option>
-                    </select>
-                    <label for="price">Preço:</label>
-                    <input type="text" id="priceModal" name="price">
-                    <button type="submit">Salvar</button>
-                </form>
-            </div>
-        </div>
-    
     
     </body>
 </html>
