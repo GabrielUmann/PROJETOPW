@@ -3,8 +3,7 @@ var Cart = JSON.parse(localStorage.getItem("cart"))
 if(Cart == null){
     Cart = []
 }
-console.log(Cart)
-Cart.forEach((item) => {
+Cart.forEach((item, index) => {
     let total = Number(item.preco) * Number(item.qtd)
     tbodyCart.innerHTML += `
     <tr>
@@ -20,9 +19,9 @@ Cart.forEach((item) => {
         <td>R$ ${item.preco}</td>
         <td>
             <div class="qty">
-                <button><i class="bx bx-minus" id="minus"></i></button>
-                <span>${item.qtd}</span>
-                <button><i class="bx bx-plus" id="plus"></i></button>
+                <button class= "btnMinus"><i class="bx bx-minus" id="minus"></i></button>
+                <span class="spanQtd">${item.qtd}</span>
+                <button class= "btnPlus"><i class="bx bx-plus" id="plus"></i></button>
             </div>
         </td>
         <td>R$ ${total}</td>
@@ -31,18 +30,39 @@ Cart.forEach((item) => {
         </td>
     </tr>
     `
-    let btnMinus = document.querySelector("#minus")
-    let btnPlus = document.querySelector("#plus")
-
-    btnMinus.addEventListener("click", () => {
-        //console.log("menos")
-        item.qtd--
-    })
-
-    btnPlus.addEventListener("click", () => {
-        //console.log("mais")
-        item.qtd++
-    })
-
 })
-//não funcionando
+
+Cart.forEach((item, index) => {
+        let btnMinus = document.querySelectorAll(".btnMinus")
+        let btnPlus = document.querySelectorAll(".btnPlus")
+        const spanQtd = document.querySelectorAll(".spanQtd")
+    
+        btnMinus[index].addEventListener("click", () => {
+            item.qtd -= 1
+            spanQtd[index].textContent = item.qtd
+            rewriteCartItem(item, item.qtd)
+        })
+        btnPlus[index].addEventListener("click", () => {
+            item.qtd += 1
+            spanQtd[index].textContent = item.qtd
+            rewriteCartItem(item , item.qtd)
+        })
+})
+
+function rewriteCartItem(temp, value){
+    var Cart = JSON.parse(localStorage.getItem("cart"))
+        if (Cart == null) {
+            Cart = []
+        }
+
+        Cart.forEach((item) => {
+            if (item.id == temp.id) {
+                item.qtd = value
+            }
+        })
+
+        localStorage.setItem("cart", JSON.stringify(Cart))
+        console.log(value)
+        //console.log(JSON.parse(localStorage.getItem("cart")))
+}
+console.log(Cart)
