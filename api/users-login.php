@@ -11,12 +11,23 @@ if(in_array("",$post)){
     echo json_encode($response);
     exit;
 }
-
-$query = "SELECT * FROM `usuarios` WHERE usuarios.senha = :password and usuarios.email = :email";
+$password = $post["password"];
+$query = "SELECT * FROM `usuarios` WHERE usuarios.email = :email";
 $stmt = $conn->prepare($query);
-$stmt->bindParam("password", $post["password"]); 
 $stmt->bindParam("email",$post["email"]);
 $stmt->execute();
+$user = $stmt->fetch();
+
+if(!password_verify($password, $user["senha"])){
+    $response = [
+        "type" => "error",
+        "message" => "Senha Incorreta!"
+    ];
+    echo json_encode($response);
+    exit;
+
+};
+
 
 if($stmt->rowCount() != 1){
     $response = [
@@ -31,6 +42,5 @@ $response = [
    "type" => "success",
    "message" => "Bem vindo!"
 ];
-
 echo json_encode($response);
 

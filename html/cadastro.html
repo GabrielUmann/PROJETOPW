@@ -2,31 +2,31 @@
     <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mercado pipo</title>
+        
+        <title>Cadastro</title>
         <link rel="stylesheet" href="../assets/cadastro.css">
         <script src="../assets/cadastro.js" async></script>
         
-        <link rel="stylesheet"
-        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
     </head>
     <body>
-        
-        <section class="product">
+    <div class="alert-container" id="alert">
+        <p>Logado com sucesso</p>
+        <img src="../img_pagina/check-icon.png"> <br>
+        <button class="ok-button" onclick="closeAlert()" >OK</button>
+    </div>
+    <section class="area-register">
+        <div class="register">
             <h1>Crie a sua conta no melhor site do mundo!</h1>
-            <form id="registerUser">
-                <input type="text" name="name" id="name" placeholder="Nome"> <br>
-                <input type="email" name="email" id="email" placeholder="Email"> <br>
-                <input type="password" name="password" id="password" placeholder="Senha"> <br>
-                <button id="btnCreate" type="submit"> Criar conta</button><br>
+            <form id="form-register" method="post">
+                <input type="text" name="name" placeholder="Nome">
+                <input type="email" name="email" placeholder="Email" > 
+                <input type="password" name="password" placeholder="Senha"> 
+                <input type="submit" value="Criar"></input>
             </form>
             <p>Já tem uma conta? <a href="../index.html">Entre!</a></p>
-        </section>
+        </div>
+    </section>
     </body>
 </html>

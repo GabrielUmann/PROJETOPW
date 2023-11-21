@@ -12,6 +12,7 @@ function loadProducts(){
     tbodyCart.innerHTML = ""
     Cart.forEach((item, index) => {
 
+        // bota os itens no carrinho 
         let totalItem = Number(item.preco) * Number(item.qtd)
         tbodyCart.innerHTML += `
         <tr>
@@ -48,6 +49,9 @@ function loadProducts(){
 
 loadProducts()
 Cart.forEach((item, index) => {
+
+        // aumenta e diminiu a quantidade do item
+
         let btnMinus = document.querySelectorAll(".btnMinus")
         let btnPlus = document.querySelectorAll(".btnPlus")
         let btnRemove = document.querySelectorAll(".remove")
@@ -84,6 +88,7 @@ Cart.forEach((item, index) => {
         })
 })
 
+    // reescreve o item e joga no localhost
 function rewriteCartItem(temp, value){
     var Cart = JSON.parse(localStorage.getItem("cart"))
         if (Cart == null) {
@@ -101,6 +106,7 @@ function rewriteCartItem(temp, value){
         //console.log(JSON.parse(localStorage.getItem("cart")))
 }
 
+    // remove o item do localhost
 function removeCartItem(item){
     Cart.splice(Cart.indexOf(item), 1)
     //console.log(Cart)
@@ -108,8 +114,26 @@ function removeCartItem(item){
     location.reload()
 }
 
-console.log(Cart)
+//console.log(Cart)
 
+const btnFinish = document.querySelector("#btnFinish")
+
+btnFinish.addEventListener("click", () => {
+    let url = `../api/pedido-insert.php`
+    let formdataCart = new FormData()
+    formdataCart.append("CartProducts", JSON.stringify(Cart))
+    let method = {
+        method : "post",
+        body : formdataCart
+    }
+    fetch(url, method).then((response) => {
+        response.json().then((message) => {
+
+        })
+    })
+
+
+})
 
 
 // fazer span para avaliar processo

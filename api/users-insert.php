@@ -16,7 +16,7 @@ if(in_array("",$post)){
 // CONFERIR SE O EMAIL JA TA CADASTRADO
 //
 
-$query = "SELECT * FROM users WHERE email = :email";
+$query = "SELECT * FROM `usuarios` WHERE email = :email";
 $stmt = $conn->prepare($query);
 $stmt->bindParam("email",$post["email"]);
 $stmt->execute();

@@ -1,5 +1,5 @@
 // JavaScript para pegar a mensagem
- var alertBox = document.getElementById('alert');
+var alertBox = document.getElementById('alert');
 
 const formSave = document.querySelector("#form-login")
 
