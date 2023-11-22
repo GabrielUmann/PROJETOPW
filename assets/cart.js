@@ -119,7 +119,7 @@ function removeCartItem(item){
 const btnFinish = document.querySelector("#btnFinish")
 
 btnFinish.addEventListener("click", () => {
-    let url = `../api/pedido-insert.php`
+    let url = `../api/order-insert.php`
     let formdataCart = new FormData()
     formdataCart.append("CartProducts", JSON.stringify(Cart))
     let method = {

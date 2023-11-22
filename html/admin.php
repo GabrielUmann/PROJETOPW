@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if(empty($_SESSION["user"])){
+    header("Location: ../index.html");
+}
+
+
+if($_SESSION["user"]["role"] != "ADMIN"){
+    header("Location: ../index.html");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

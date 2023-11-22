@@ -16,7 +16,11 @@ formSave.addEventListener("submit", (event) => {
     fetch(url, options).then((response) => {
         response.json().then((users) => {
             console.log(users)
-            if(users.type != "error"){
+            if(users.type == "ADMINISTRATION"){
+                setTimeout(() => {
+                    window.location.href = users.url
+                }, 1) 
+            }else if(users.type == "success"){
                 alertBox.innerHTML = `
                 <p>${users.message}</p>
                 <img src="img_pagina/check-icon.png"> <br>
@@ -24,11 +28,14 @@ formSave.addEventListener("submit", (event) => {
             `
             alertBox.classList.add('show')
             alertBox.classList.add('sucess')
-            
-            setTimeout(() => {
-                window.location.href = "html/principal.html"
-            }, 1500)  
 
+            setTimeout(() => {
+                window.location.href = users.url
+            }, 1) 
+            
+
+ 
+          
             }else{
                 alertBox.innerHTML = `
                 <p>${users.message}</p>

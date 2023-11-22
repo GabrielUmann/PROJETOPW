@@ -35,7 +35,7 @@ if($stmt->rowCount() == 1){
 if(mb_strlen($post["password"]) < 7){
     $response = [
         "type" => "error",
-        "message" => "Senha Curta!"
+        "message" => "Sua senha tem que ser maior que 7!"
     ];
     echo json_encode($response);
     exit;
@@ -45,7 +45,7 @@ if(mb_strlen($post["password"]) < 7){
 // INSERIR VALOR NO BANCO DE DADOS
 //
 
-$query = "INSERT INTO `usuarios` VALUES (NULL, :name, :email, :password)";
+$query = "INSERT INTO `usuarios` VALUES (NULL, :name, :email, :password, 'default')";
 $stmt = $conn->prepare($query);
 $stmt->bindParam("name", $post["name"]);
 $stmt->bindParam("email",$post["email"]);

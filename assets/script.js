@@ -1,7 +1,7 @@
 
 const btnCarrinho = document.querySelector(".btnCarrinho")
 btnCarrinho.addEventListener("click", () => {
-    window.location.href = "cart.html"
+    window.location.href = "cart.php"
 })
 
 
