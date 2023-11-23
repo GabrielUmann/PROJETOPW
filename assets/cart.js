@@ -133,7 +133,10 @@ btnFinish.addEventListener("click", () => {
     })
 
 
+
+    let ratingForm = document.querySelector("#ratingForm")
+    let cartContent = document.querySelector(".content")
+    ratingForm.style.display = "block"
+    cartContent.classList.add("no-pointer")
 })
 
-
-// fazer span para avaliar processo

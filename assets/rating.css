@@ -1,0 +1,39 @@
+#ratingForm {
+    top: 20%;
+    right: 25%;
+    background-color: #ffffff;
+    color: #4caf50;
+    border: 1px solid #000000;
+    padding: 100px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    text-align: center;
+    display: none;
+    position: absolute;
+  }
+
+  #ratingForm label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  #ratingForm input, #ratingForm select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+  #ratingForm button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .show {
+    display: block; /* Mostra quando a classe show é aplicada */
+  }
