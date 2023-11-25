@@ -124,7 +124,7 @@ btnFinish.addEventListener("click", () => {
     let url = `../api/order-insert.php`
     let formdataCart = new FormData()
     formdataCart.append("CartProducts", JSON.stringify(Cart))
-    console.log(Cart)
+    //console.log(Cart)
     let method = {
         method : "post",
         body : formdataCart
@@ -148,16 +148,32 @@ btnFinish.addEventListener("click", () => {
         response.json().then((message) => {
             console.log(message)
             if(message.type == "success"){
-                let ratingForm = document.querySelector("#ratingForm")
+                let ratingForm = document.querySelector("#divRatingForm")
                 let cartContent = document.querySelector(".content")
                 ratingForm.style.display = "block"
                 cartContent.classList.add("no-pointer")
             }else{
                 alert("erro")
             }
+        })
     })
-
-
-
 })
+const formRating = document.querySelector("#ratingForm")
+
+formRating.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    let url = `../api/rating-insert.php`
+    let formdataRating = new FormData(formRating)
+    let method = {
+        method : "post",
+        body : formdataRating
+    }
+    fetch(url, method).then((response) => {
+        response.json().then((message) => {
+            localStorage.clear();
+            location.href = message.url
+        })
+    })
 })
+

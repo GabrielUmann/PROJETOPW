@@ -65,11 +65,11 @@ if(empty($_SESSION["user"])){
       </div>
     </main>
     <section>
-    <div id="ratingForm">
+    <div id="divRatingForm">
         <h2>Formulário de Avaliação</h2>
-        <form>
-        <label for="assunto">Assunto:</label>
-        <input type="text" id="assunto" name="assunto" required>
+        <form id="ratingForm">
+        <label for="assunto">Avaliação:</label>
+        <input type="text" name="ratingText" required>
 
         <label for="grade">Nota (0 a 10):</label>
         <select id="grade" name="grade" required>
