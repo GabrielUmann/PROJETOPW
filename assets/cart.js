@@ -115,28 +115,49 @@ function removeCartItem(item){
 }
 
 //console.log(Cart)
-
+// PEDIDO
 const btnFinish = document.querySelector("#btnFinish")
 
 btnFinish.addEventListener("click", () => {
+
+    //insere o pedido no bd
     let url = `../api/order-insert.php`
     let formdataCart = new FormData()
     formdataCart.append("CartProducts", JSON.stringify(Cart))
+    console.log(Cart)
     let method = {
         method : "post",
         body : formdataCart
     }
     fetch(url, method).then((response) => {
         response.json().then((message) => {
-
+            console.log(message)
         })
+    })
+
+    //insere os itens do pedido
+    url = `../api/order-insert-products.php`
+    formdataCart = new FormData()
+    formdataCart.append("CartProducts", JSON.stringify(Cart))
+
+    method = {
+        method : "post",
+        body : formdataCart
+    }
+    fetch(url, method).then((response) => {
+        response.json().then((message) => {
+            console.log(message)
+            if(message.type == "success"){
+                let ratingForm = document.querySelector("#ratingForm")
+                let cartContent = document.querySelector(".content")
+                ratingForm.style.display = "block"
+                cartContent.classList.add("no-pointer")
+            }else{
+                alert("erro")
+            }
     })
 
 
 
-    let ratingForm = document.querySelector("#ratingForm")
-    let cartContent = document.querySelector(".content")
-    ratingForm.style.display = "block"
-    cartContent.classList.add("no-pointer")
 })
-
+})
