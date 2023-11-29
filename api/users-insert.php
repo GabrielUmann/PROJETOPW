@@ -15,7 +15,6 @@ if(in_array("",$post)){
 //
 // CONFERIR SE O EMAIL JA TA CADASTRADO
 //
-
 $query = "SELECT * FROM `usuarios` WHERE email = :email";
 $stmt = $conn->prepare($query);
 $stmt->bindParam("email",$post["email"]);
@@ -44,11 +43,15 @@ if(mb_strlen($post["password"]) < 7){
 //
 // INSERIR VALOR NO BANCO DE DADOS
 //
+if(!isset($post["role"])){
+    $post["role"] = 'default';
+}
 
-$query = "INSERT INTO `usuarios` VALUES (NULL, :name, :email, :password, 'default')";
+$query = "INSERT INTO `usuarios` VALUES (NULL, :name, :email, :password, :role)";
 $stmt = $conn->prepare($query);
 $stmt->bindParam("name", $post["name"]);
 $stmt->bindParam("email",$post["email"]);
+$stmt->bindParam("role",$post["role"]);
 $password = password_hash($post["password"], PASSWORD_DEFAULT);
 $stmt->bindParam("password",$password);
 $stmt->execute();

@@ -19,9 +19,9 @@ if($_SESSION["user"]["role"] != "ADMIN"){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="../assets/admin.js" async></script>
-        <link rel="stylesheet" href="../assets/adm.css">
     </head>
     <body>
+         <!-- Adiciona  produtos -->
         <h1> CADASTRO DE PRODUTO </h1>
         <form id="registerProduct" method="post" enctype="multipart/form-data">
             <label for="name"> NOME </label>
@@ -34,42 +34,89 @@ if($_SESSION["user"]["role"] != "ADMIN"){
             <input name="image" type="file" accept="image/*">
 
             <label for="name"> CATEGORIA </label>
-            <select name="category" id="category">
+            <select name="category" class="category">
                 <option selected disabled value="0"> Selecione sua Categoria </option>
             </select>
             <button type="submit"> Adicionar </button><br>
         </form>
 
-        <!-- EDITAR PRODUTOS -->
+        <!-- Adiciona uysuarios -->
 
+        <h1> CADASTRO DE USUARIOS</h1>
+        <form id="form-register" method="post">
+            <input type="text" name="name" placeholder="Nome">
+            <input type="email" name="email" placeholder="Email" > 
+            <input type="password" name="password" placeholder="Senha"> 
+            <select name="role">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="default">default</option>
+                <option value="ADMIN">admin</option>
+            </select>
+            <input type="submit" value="Criar"></input>
+        </form>
+        <hr>
+
+        <!-- mostra todos os produtos -->
         <div class="container">
-            <h1>Lista de Livros</h1>
+            <h1>Lista de produtos</h1>
             <div class="filter">
                 <label for="category">Categoria:</label>
-                <select id="category">
-                    <option value="">Selecione uma categoria</option>
+                <select class="category">
+                    <option selected disabled > Selecione sua Categoria </option>
+                    <option value="0" > Todos </option>
+
                 </select>
-                <label for="author">Autor:</label>
-                <select id="author">
-                </select>
-                <label for="bookTitle">Título do Livro:</label>
-                <input type="text" id="bookTitle">
+
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName">
             </div>
             <table>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Título</th>
+                    <th>Nome</th>
                     <th>Preço</th>
-                    <th>Apagar</th>
+                    <th>Image</th>
                 </tr>
                 </thead>
-                <tbody id="bookList">
-        
+                <tbody id="productList">
+                    <tr>
+                    <td id ="${e.id}">${e.id}</td><td>${e.title}</td><td>${e.price}</td><td><img src="" alt="img"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-    
+
+        <!-- Modal para editar produtos -->
+        <div id="edit-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Editar produtos</h2>
+                <form id="edit-form">
+                    <input type="hidden" id="produtoId" name="produtoId">
+
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name">
+
+                    <label for="price">Preço:</label>
+                    <input type="text" id="price" name="price">
+
+                    <label for="category">Categoria:</label>
+                    <select class="category" name="category">
+                        <option value="">Selecione uma Categoria</option>
+                    </select>
+                    
+                    <input name="image" type="file" accept="image/*">
+                    <img src="" id="productImage">
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        <style>
+            #edit-modal{
+                display: none;
+            }
+        </style>
     </body>
 </html>
 
