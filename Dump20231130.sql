@@ -35,7 +35,7 @@ CREATE TABLE `avaliacoes` (
   KEY `pedido_id` (`pedido_id`),
   CONSTRAINT `avaliacoes_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `avaliacoes_ibfk_2` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `avaliacoes` (
 
 LOCK TABLES `avaliacoes` WRITE;
 /*!40000 ALTER TABLE `avaliacoes` DISABLE KEYS */;
-INSERT INTO `avaliacoes` VALUES (2,12,6,'muito boa a compra',43),(3,12,10,'muito boa a compra',43),(4,13,7,'gostei porem caro',45),(5,13,7,'gostei porem caro',46);
+INSERT INTO `avaliacoes` VALUES (2,12,6,'muito boa a compra',43),(3,12,10,'muito boa a compra',43),(4,13,7,'gostei porem caro',45),(5,13,7,'gostei porem caro',46),(6,14,10,'ip9ot89p',47);
 /*!40000 ALTER TABLE `avaliacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `itenspedido` (
   KEY `produto_id` (`produto_id`),
   CONSTRAINT `itenspedido_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`),
   CONSTRAINT `itenspedido_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `itenspedido` (
 
 LOCK TABLES `itenspedido` WRITE;
 /*!40000 ALTER TABLE `itenspedido` DISABLE KEYS */;
-INSERT INTO `itenspedido` VALUES (1,43,2,3,3799.99),(2,43,7,1,299.99),(3,43,5,1,2599.99),(4,43,6,1,399.99),(5,43,1,1,2500.00),(6,43,3,1,2799.99),(7,44,2,1,3799.99),(8,44,3,1,2799.99),(9,44,4,2,499.99),(10,44,9,1,400.00),(11,44,12,1,199.99),(12,45,2,1,3799.99),(13,45,3,1,2799.99),(14,45,4,2,499.99),(15,45,9,1,400.00),(16,45,12,1,199.99),(17,46,2,1,3799.99),(18,46,3,1,2799.99),(19,46,4,2,499.99),(20,46,9,1,400.00),(21,46,12,1,199.99);
+INSERT INTO `itenspedido` VALUES (1,43,2,3,3799.99),(2,43,7,1,299.99),(3,43,5,1,2599.99),(4,43,6,1,399.99),(5,43,1,1,2500.00),(6,43,3,1,2799.99),(7,44,2,1,3799.99),(8,44,3,1,2799.99),(9,44,4,2,499.99),(10,44,9,1,400.00),(11,44,12,1,199.99),(12,45,2,1,3799.99),(13,45,3,1,2799.99),(14,45,4,2,499.99),(15,45,9,1,400.00),(16,45,12,1,199.99),(17,46,2,1,3799.99),(18,46,3,1,2799.99),(19,46,4,2,499.99),(20,46,9,1,400.00),(21,46,12,1,199.99),(22,47,10,2,200.00),(23,47,3,1,2799.99);
 /*!40000 ALTER TABLE `itenspedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (43,12,'2023-11-25 19:02:00'),(44,13,'2023-11-25 19:58:50'),(45,13,'2023-11-25 19:59:24'),(46,13,'2023-11-25 20:00:11');
+INSERT INTO `pedidos` VALUES (43,12,'2023-11-25 19:02:00'),(44,13,'2023-11-25 19:58:50'),(45,13,'2023-11-25 19:59:24'),(46,13,'2023-11-25 20:00:11'),(47,14,'2023-11-25 23:00:56');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +146,7 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`id`),
   KEY `categoria_id` (`categoria_id`),
   CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +155,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (1,'playstation 2',2500.00,'../img/play2.jfif',2),(2,'PlayStation 5',3799.99,'../img/ps5.png',3),(3,'PS VR',2799.99,'../img/psvr.png',1),(4,'Controle de PS5',499.99,'../img/2.jpg',1),(5,'Playstation 4',2599.99,'../img/ps4.webp',3),(6,'Controle de PS4',399.99,'../img/controle de ps4.webp',1),(7,'God Of War PS5',299.99,'../img/god.webp',2),(8,'HZ Dawn PS4',249.99,'../img/Horizon.jpg',2),(9,'AC Valhalla PS4',400.00,'../img/assa.webp',2),(10,'Miles Morales PS4',200.00,'../img/Miles.jpg',2),(11,'Call Of Duty Mw2',299.00,'../img/cod.webp',2),(12,'Rainbow Six Ps5',199.99,'../img/r6.jpg',2),(13,'Elden Ring PS4',220.00,'../img/ring.webp',2);
+INSERT INTO `produtos` VALUES (1,'playstation 2',2500.00,'../img/play2.jfif',3),(2,'PlayStation 5',3799.99,'../img/ps5.png',3),(3,'PS VR',2799.99,'../img/psvr.png',1),(4,'Controle de PS5',499.99,'../img/2.jpg',1),(5,'Playstation 4',2599.99,'../img/ps4.webp',3),(6,'Controle de PS4',399.99,'../img/controle de ps4.webp',1),(7,'God Of War PS5',299.99,'../img/god.webp',2),(8,'HZ Dawn PS4',249.99,'../img/Horizon.jpg',2),(9,'AC Valhalla PS4',400.00,'../img/assa.webp',2),(10,'Miles Morales PS4',200.00,'../img/Miles.jpg',2),(11,'Call Of Duty Mw2',299.00,'../img/cod.webp',2),(12,'Rainbow Six Ps5',199.99,'../img/r6.jpg',2),(13,'Elden Ring PS4',220.00,'../img/ring.webp',2);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `usuarios` (
   `role` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (8,'gabriel','bielzinho@gmail.com','$2y$10$.IlCaIbR9KLwH8q1rNJb8u1WbJ.OnqTtz3i66a1Jz6Gt.aOXZ68J2','default'),(9,'lucas','lucas@gmail.com','$2y$10$rqEIFjLpe1uYn0Q0inAlveurvUNcPRNSibklFOPMR0yYzvw7i6.gK','default'),(10,'Geladeira','giacomo.net11@gmail.com','$2y$10$S35or0J21m/FwohG3YfnQ.oyG8rx9aBYKEds2dJAopMUUdW4z76Um','default'),(12,'ADM','administrador','$2y$10$g/EGf9xlH0hIkPfnqUPuf.nqDomgf6iSToDgTvv.gvEoerj8HPb8m','ADMIN'),(13,'Lucas Neves','neves@gmail.com','$2y$10$ps3EtBx0CwjaFbXmG5qtROU5BzTarsqfcSr0j4vE.eZTmgqo54x3y','default');
+INSERT INTO `usuarios` VALUES (8,'gabriel','bielzinho@gmail.com','$2y$10$.IlCaIbR9KLwH8q1rNJb8u1WbJ.OnqTtz3i66a1Jz6Gt.aOXZ68J2','default'),(9,'lucas','lucas@gmail.com','$2y$10$rqEIFjLpe1uYn0Q0inAlveurvUNcPRNSibklFOPMR0yYzvw7i6.gK','default'),(10,'Geladeira','giacomo.net11@gmail.com','$2y$10$S35or0J21m/FwohG3YfnQ.oyG8rx9aBYKEds2dJAopMUUdW4z76Um','default'),(12,'ADM','administrador','$2y$10$g/EGf9xlH0hIkPfnqUPuf.nqDomgf6iSToDgTvv.gvEoerj8HPb8m','ADMIN'),(13,'Lucas Neves','neves@gmail.com','$2y$10$ps3EtBx0CwjaFbXmG5qtROU5BzTarsqfcSr0j4vE.eZTmgqo54x3y','default'),(14,'Sidnara','sid@gmail.com','$2y$10$bZmsBiMKhb/8ATXDu4ptLefopsSkHfyzna5J7C8ZjC9WoZlpLCHaa','default'),(15,'louco','louco@gmail.com','$2y$10$hoRFdyCjTk3qnhZDtIsXYuPJwZrCtfo8uto2W1MHcr8KNfBsbgXhm','ADMIN');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,4 +225,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-25 18:41:24
+-- Dump completed on 2023-11-30  1:26:43

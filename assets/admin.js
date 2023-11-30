@@ -1,7 +1,6 @@
 // seleciona as categorias
 
-const selectCategory = document.querySelectorAll("#category")
-
+const selectCategory = document.querySelectorAll(".category")
 
 function getCategories(){
     const urlCategories = "../api/categories-list.php";
@@ -47,6 +46,7 @@ formRegisterProduct.addEventListener("submit", (event) => {
             ${message.type}
             ${message.message}
             `)
+            location.reload()
         })
     })
     
@@ -72,6 +72,7 @@ formRegisterUser.addEventListener("submit", (event) => {
             ${message.type}
             ${message.message}
             `)
+            location.reload()
         })
     })
     
@@ -81,6 +82,7 @@ formRegisterUser.addEventListener("submit", (event) => {
 // produtos por categorias
 
 const productList = document.querySelector("#productList")
+//function
 function ListarProdutos(e){
     productList.innerHTML += `
     <tr>
@@ -89,6 +91,7 @@ function ListarProdutos(e){
     `
 
 }
+
 
 selectCategory[1].addEventListener("change" , (event) => {
     productList.innerHTML = " "
@@ -180,15 +183,44 @@ function openModal(productId) {
     fetch(url, options).then((response) => {
         response.json().then((product) => {
             console.log(product)
-            // const title = document.querySelector("#title");
-            // title.value = book.title;
-            // selectCategoryModal.value = book.category_id
-            // selectAuthorModal.value = book.author_id
-            // selectPriceModal.value = "10"
+            let produtoId = document.querySelector("#productIdModal")
+            produtoId.value = product.id
+
+            let name = document.querySelector("#nameModal");
+            name.value = product.nome
+
+            let price = document.querySelector("#priceModal");
+            price.value = product.preco
+
+            selectCategory[2].value = product.categoria_id
+
+            let imageModal = document.querySelector("#imageModal") 
+            imageModal.src = product.img_path
+
+            const eraseProduct = document.querySelector("#eraseProduct")
+            eraseProduct.addEventListener("click", () => {
+                let param = {
+                    "productId" : product.id
+                }
+                let query = new URLSearchParams(param) 
+                let url = `../api/product-delete.php?${query.toString()}`
+                fetch(url,{method: "get"}).then((response) => {
+                    response.json().then((message) => {
+                        alert(`
+                        ${message.type}
+                        ${message.message}
+                        `)
+                        location.reload()
+                        return;
+                    })
+                })
+
+
+
+            })
             
         })
     })
-
 
 }
 
@@ -211,21 +243,25 @@ tableProduct.addEventListener("click", (event) => {
     openModal(productId);
 });
 
-// const formSave = document.querySelector("form");
 
-// formSave.addEventListener("submit", (event) => {
-//     event.preventDefault();
-//     const data = new FormData(formSave);
-//     const urlUpdateBook = `api/book-update.php`;
-//     const options = {
-//         method: "post",
-//         body : data
-//     };
 
-//     fetch(urlUpdateBook, options).then((response) => {
-//         response.json().then((book) => {
-//             console.log(book);
-//         });
-//     });
+editForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+    let data = new FormData(editForm);
+    let url = `../api/product-update.php`;
+    let options = {
+        method: "post",
+        body : data
+    };
 
-// });
+    fetch(url, options).then((response) => {
+        response.json().then((message) => {
+            console.log(message);
+            alert(`
+                ${message.type}
+                ${message.message}
+            `)
+            location.reload()
+        });
+    });
+})

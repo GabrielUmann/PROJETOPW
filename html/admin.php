@@ -19,6 +19,7 @@ if($_SESSION["user"]["role"] != "ADMIN"){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="../assets/admin.js" async></script>
+        <link rel="stylesheet" href="../assets/admin.css">
     </head>
     <body>
          <!-- Adiciona  produtos -->
@@ -54,7 +55,6 @@ if($_SESSION["user"]["role"] != "ADMIN"){
             </select>
             <input type="submit" value="Criar"></input>
         </form>
-        <hr>
 
         <!-- mostra todos os produtos -->
         <div class="container">
@@ -80,9 +80,6 @@ if($_SESSION["user"]["role"] != "ADMIN"){
                 </tr>
                 </thead>
                 <tbody id="productList">
-                    <tr>
-                    <td id ="${e.id}">${e.id}</td><td>${e.title}</td><td>${e.price}</td><td><img src="" alt="img"></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -93,30 +90,25 @@ if($_SESSION["user"]["role"] != "ADMIN"){
                 <span class="close">&times;</span>
                 <h2>Editar produtos</h2>
                 <form id="edit-form">
-                    <input type="hidden" id="produtoId" name="produtoId">
+                    <input type="hidden" id="productIdModal" name="productId">
 
                     <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="nameModal" name="name">
 
                     <label for="price">Preço:</label>
-                    <input type="text" id="price" name="price">
+                    <input type="text" id="priceModal" name="price">
 
                     <label for="category">Categoria:</label>
                     <select class="category" name="category">
                         <option value="">Selecione uma Categoria</option>
                     </select>
-                    
-                    <input name="image" type="file" accept="image/*">
-                    <img src="" id="productImage">
-                    <button type="submit">Salvar</button>
+                    <img src="" id="imageModal" alt="no image">
+                    <input name="image" type="file" accept="image/*" >
+                    <input type="button" id="eraseProduct" value="Excluir">
+                    <button type="submit">Salvar</button> 
                 </form>
             </div>
         </div>
-        <style>
-            #edit-modal{
-                display: none;
-            }
-        </style>
     </body>
 </html>
 
